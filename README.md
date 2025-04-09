@@ -22,16 +22,19 @@ El análisis se basa en una base de datos que contiene un registro con la inform
 Utilizaré un archivo que tiene el propio Avaya en su pagina que se encarga de explicar a que se refiere cada columna, ya que son los que gestionan esta base de datos.
 
 ## Objetivos
-
+Se limpian y cargan los datos: Se gestionan los valores nulos, se eliminan duplicados y se estandarizan los formatos.
+Se exploran con gráficos iniciales: Se buscan patrones generales a través de visualizaciones básicas.
+Se analiza la evolución en el tiempo: Se estudian precios y volúmenes promedio, con foco en la estacionalidad.
+Se compara por regiones de EE. UU.: Se identifican diferencias en los patrones regionales.
+Se evalúa entre tipos de aguacate: Se buscan las disparidades entre las variedades.
+Se visualizan los hallazgos clave: Se crean gráficas para comunicar las conclusiones principales.
 ## Tecnología y herramientas
 
 ## Proceso diario y como evoluciona el trabajo
-Este conjunto de datos posee muchos registros, lo cual es bastante bueno ya que no nos quedaremos cortos a la hora de entrenar el modelo de IA, pero también contiene muchas características. Antes de analizar cada caracterísitca, he hecho una visualización que nos permite ver que características contienen información y cuales no, de este modo si localizamos una característica que no contenga información, la podemos obviar. Con la siguiente linea de codigo generaremos un mapa de calor, donde los datos vacios se grafican de color rojo. 
-
-![image](https://github.com/user-attachments/assets/d93a70c8-6fa6-41ee-8311-582bdaec856c)
-
-Como vemos hay muchas que están vacias, lo que nos permite eliminar una buena cantidad de columnas que son irrelevantes ya que sus datos son nulos.
-
+Primeramente separaremos los datos en los dos tipos organic y conventional.
+Asignaremos a cada region una "Rregion" que son 13.
+Observamos las 4 regiones con la diferencia de picos mas altos
+![image](https://github.com/user-attachments/assets/43f839b4-de29-4eb7-bf9d-27c3e5455f16)
 
  ## Bibliografia
  https://documentation.avaya.com/es-XL/bundle/AvayaCMSDBItemsCalculations_r21/page/Avaya_Documentation_Center_navigation.html
