@@ -1,10 +1,22 @@
-# Emergency Call Predict: Prediccion de llamadas de emergencia al SEM utilizando IA y Mineria de Datos.
+# ANÁLISIS DE PRECIOS Y VOLUMEN DE AGUACATE VENDIDOS EN EEUU Y PREDICCIÓN DEL PRECIO
 ## Introducción
-Este proyecto tiene como objetivo analizar y extrear insight clave a partir de los datos relacionados con las llamadas telefónicas recibidas por el SEM, el Sistema de Emergencias Médicas de Cataluña. A través de este estudio se busca comprender el comportamiento de la población y buscar patrones que nos permitan predecir la cantidad de llamadas que se recibirá en el futuro.
+Aguacates, qué ricos verdad? A muchos les gustará y a otros no tanto, lo que está claro es que valen su peso en oro. Para ver la tendencia que sigue el tan llamado oro verde, utilizaremos un dataset de aguacates facilitados por el profesor Anthony. En este CSV tenemos diferentes columnas referentes a cantidades de aguacates vendidas por ciertas regiones o ciudades.
 ## Conjunto de datos
 El análisis se basa en una base de datos que contiene un registro con la información relacionada a la llamada, pero no contiene información de la propia llamada; no sabemos la causa de estas llamadas.
   - Número de registros: muchos
-  - Número de columnas: 85
+  - Número de columnas: 13
+    -  Date: Fecha del registro (semanal)
+    -  AveragePrice: Precio promedio
+    -  Total Volume: El volumen total
+    -  4046: Tipo de aguacate Hass pequeño
+    -  4225: Tipo de aguacate Hass grande
+    -  4770: Tipo de aguacate Hass extragrande
+    -  Total bags: Cantidad de bolsas vendidas totales
+    -  Small Bags: Bolsas pequeñas
+    -  XLarge Bags: Bolsas grandes
+    -  type: Tipo
+    -  year: Añi
+    -  region: Lugar, ciudad.
   - Columnas principales:
 
 Utilizaré un archivo que tiene el propio Avaya en su pagina que se encarga de explicar a que se refiere cada columna, ya que son los que gestionan esta base de datos.
