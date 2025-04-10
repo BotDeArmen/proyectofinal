@@ -30,11 +30,16 @@ Se evalúa entre tipos de aguacate: Se buscan las disparidades entre las varieda
 Se visualizan los hallazgos clave: Se crean gráficas para comunicar las conclusiones principales.
 ## Tecnología y herramientas
 
-## Proceso diario y como evoluciona el trabajo
+## Proceso
 Primeramente separaremos los datos en los dos tipos organic y conventional.
 Asignaremos a cada region una "Rregion" que son 13.
 Observamos las 4 regiones con la diferencia de picos mas altos
 ![image](https://github.com/user-attachments/assets/43f839b4-de29-4eb7-bf9d-27c3e5455f16)
+
+![image](https://github.com/user-attachments/assets/fa660252-c2e4-41c2-a379-8c63a862e082)
+
+![image](https://github.com/user-attachments/assets/06b34426-c4fb-4bbe-99e7-0cb3f2550137)
+
 
  ## Bibliografia
  https://documentation.avaya.com/es-XL/bundle/AvayaCMSDBItemsCalculations_r21/page/Avaya_Documentation_Center_navigation.html
