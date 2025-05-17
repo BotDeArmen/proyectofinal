@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/f8af3ce0-13a9-4689-b25c-f4f860c93ef8)# ANÁLISIS DE PRECIOS Y VOLUMEN DE AGUACATE VENDIDOS EN EEUU Y PREDICCIÓN DEL PRECIO
+# ANÁLISIS DE PRECIOS Y VOLUMEN DE AGUACATE VENDIDOS EN EEUU Y PREDICCIÓN DEL PRECIO
 ## Introducción
 Aguacates, qué ricos verdad? A muchos les gustará y a otros no tanto, lo que está claro es que valen su peso en oro. Para ver la tendencia que sigue el tan llamado oro verde, utilizaremos un dataset de aguacates facilitados por el profesor Anthony. En este CSV tenemos diferentes columnas referentes a cantidades de aguacates vendidas por ciertas regiones o ciudades.
 ## Conjunto de datos
@@ -299,11 +299,196 @@ Buena elección para representar la zona Midsouth. Además presenta un comportam
 **Midwest: Chicago**
 Excelente para tener un gran mercado del Medio Oeste, con su propia dinámica.
 
-VOLUMEN - CALIFORNIA
+EVOLUCIÓN - CALIFORNIA
+
 ![image](https://github.com/user-attachments/assets/3a65efa8-6fd5-477d-931d-b8792ababb4f) ![image](https://github.com/user-attachments/assets/84631cb2-34c4-4f72-acc4-e14c4174e0f8)
 
+Se observa una clara estacionalidad en los datos y en el caso de orgánicos vemos una tendencia alcista.
 
+EVOLUCIÓN - CHICAGO
 
+![image](https://github.com/user-attachments/assets/76043e9c-dab0-48a8-a745-87d712485348) ![image](https://github.com/user-attachments/assets/532b3c5c-5129-49f6-851f-f2bfeb0d8805)
+
+En chicago podemos observar una tendencia decreciente del volumen de convencionales y una creciente en organicos
+
+EVOLUCIÓN - ROANOKE
+
+![image](https://github.com/user-attachments/assets/d50946fa-dd5f-4112-8221-39c40e538b70)
+
+EVOLUCIÓN PHILADELPHIA
+
+![image](https://github.com/user-attachments/assets/6894b43e-5ba2-4245-8e20-670c00bddc66)
+
+EVOLUCIÓN - NASHVILLE
+
+![image](https://github.com/user-attachments/assets/8d4a1738-8dab-41b9-8102-60685d66a628)
+
+Curiosamente en Nashville, aumentan las ventas de convencionales a lo largo del tiempo.
+
+**Outliers**
+Observamos bastantes outliers. En Roanoke en 2015 vimos un repunte muy alto sobre los productos orgánicos. Esto es muy probable que se deba a que la fundación de Roanoke Natural Foods Co-op celebró su 40 aniversario, realizando campañas de márketing para popularizar este tipo de productos. Al tratarse de una situación especial, también se considerarán como outliers y los toparemos según IQR
+
+![image](https://github.com/user-attachments/assets/d6610199-3e2c-4cb5-b9f4-018b2be12120)
+
+Si bien es cierto que en muchas ocasiones caen en eventos especiales, estos outliers no nos benefician en absoluto a la hora de generar el modelo. Con la misma técnica de IQR, cambiaremos estos valores para toparlos al Q3 + 1.5 *IQR.
+
+Una vez topados, podemos observar con boxplot para ver si se ha realizado correctamente. 
+**Datos sin topar**
+
+![image](https://github.com/user-attachments/assets/110f1900-dcb7-4e85-88ca-f63c9c0a4263)
+
+**Datos después de IQR**
+
+![image](https://github.com/user-attachments/assets/73f29cb8-0fcf-4270-bc10-929d4fdb9191)
+
+Estos outliers se han calculado de manera anual puesto que hacerlo de manera total la variación de los otros años puede influir mucho en los datos. 
+Pongo de ejemplo únicamente esta región, pero se ha hecho lo mismo para todas las combinaciones. Al haber hecho los outliers por años, no podemos agruparlos todos en un único boxplot general, ya que datos de 2018 pueden ser outliers para los de 2015, entonces aparecen outliers sin serlo en realidad. Ejemplo:
+
+![image](https://github.com/user-attachments/assets/3d808b08-d468-4410-aa5f-a1905408de93)
+
+Vemos que en Philadelphia si aparecen outliers si agrupamos los años, aunque no sea el caso si hacemos una separación distinta.
+
+### INGENIERIA DE CARACTERÍSTICAS
+Para poder entrenar de manera más eficiente los modelos, primeramente he decidido agregar algunas características que puedan facilitarles identificar patrones.
+
+![image](https://github.com/user-attachments/assets/1fb7dbdc-c667-490a-8ce4-8d9c5d8a99b4)
+
+Observamos Lag 26 de Total Volume que nos indica la cantidad de volumen de hace 26 periodos. Lag 1 de Price nos indica el precio del periodo anterior. En los Near, se indica si se acerca esta festividad, es 1 mientras 4 periodos antes de la fecha y en los 2 siguientes.
+
+Se aplican estos cambios al data frame original para que todos los datos sean uniformes. 
+
+### MODELOS PREDICTIVOS
+**REGRESIÓN LINEAL**
+Generalmente utilizado con datos con tendencias claras y poca variabilidad en datos. No nos será de gran utilidad debido a la naturaleza del dataset.
+Modelos bastante inútiles para estos casos, ya que los datos tienen comportamientos variados.
+
+![image](https://github.com/user-attachments/assets/aa4900e4-dceb-4f2a-9e71-3983f4745d82)
+ 
+**REGRESIÓN POLINÓMICA**
+Para la regresión polinómica y la búsqueda de hiper parámetros he utilizado GridSearch. Se observa como el mejor resultado me lo proporciona un grado 1, lo que es una regresión lineal. La valoración del modelo se basa en el error cuadrático medio, que es el cálculo del error en las predicciones.
+Resultados:
+Mejor grado polinómico encontrado: 1
+
+Métricas en el CONJUNTO DE PRUEBA DE INTERPOLACIÓN (<2018, 20%):
+  RMSE: 55819.19
+  R^2: -4.42
+
+Métricas en el CONJUNTO DE EXTRAPOLACIÓN (2018):
+  RMSE: 24165.40
+  R^2: -0.39
+
+De todos modos, podemos aplicar un polinomio de grado 3 para observar el comportamiento:
+ Obtenemos como resultados 
+Métricas en CONJUNTO DE PRUEBA DE INTERPOLACIÓN (<2018, 20%):
+  RMSE: 44741.20
+  R^2: -2.48
+
+Métricas en CONJUNTO DE EXTRAPOLACIÓN (2018):
+  RMSE: 211885.59
+  R^2: -105.54
+
+![image](https://github.com/user-attachments/assets/e27c40f5-d018-4682-ad73-428f8642b0fa)
+
+RANDOM FOREST
+Son modelos utilizados mayoritariamente para clasificación, por lo que no suele tener en cuenta tendencias. Este modelo trabaja creando varios árboles de decisión y estos árboles hacen cada una sus predicciones sobre el target. Una vez hecho esto, la predicción que más haya salido es la que Random Forest toma como válida.
+
+![image](https://github.com/user-attachments/assets/479e2191-840e-4df1-ae22-72fb231acee8)
+
+![image](https://github.com/user-attachments/assets/7559d8d5-22d8-4baf-80a8-562a18b1ea21)
+
+ 
+Métricas de ajuste en CONJUNTO DE ENTRENAMIENTO DE INTERPOLACIÓN (<2018, 80%):
+  RMSE (ajuste entrenamiento): 10683.64
+  R^2 (ajuste entrenamiento): 0.94
+
+Métricas en CONJUNTO DE PRUEBA DE INTERPOLACIÓN (<2018, 20%):
+  RMSE: 29653.37
+  R^2: -0.53
+
+Métricas en CONJUNTO DE EXTRAPOLACIÓN (2018):
+  RMSE: 17173.70
+  R^2: 0.30
+En el conjunto de datos de entrenamiento vemos que tiene un sobreajuste del 94%, pero en predicciones a futuro no se comporta muy bien.
+ 
+Realizando GridSearch para reducir el sobreajuste con algunos parámetros esenciales como 
+Max_depth (profundidad de cada árbol), min_samples_leaf (mínimo de muestras requeridas para separar un nodo) y 'min_samples_split' (mínimo de muestras requeridas en un nodo hoja.)
+He aplicado un rango de 5 datos para cada parámetro y el que mejor encuentra es el siguiente.
+Iniciando GridSearchCV para Random Forest (con 3-fold TimeSeriesSplit)...
+Fitting 3 folds for each of 36 candidates, totalling 108 fits
+Mejores parámetros encontrados:
+{'max_depth': 3, 'min_samples_leaf': 5, 'min_samples_split': 40}
+
+Métricas de ajuste del MEJOR MODELO en CONJUNTO DE ENTRENAMIENTO DE INTERPOLACIÓN:
+  RMSE (ajuste entrenamiento): 31491.47
+  R^2 (ajuste entrenamiento): 0.46
+
+Métricas del MEJOR MODELO en CONJUNTO DE PRUEBA DE INTERPOLACIÓN (<2018, 20%):
+  RMSE: 22490.08
+  R^2: 0.12
+
+Métricas del MEJOR MODELO en CONJUNTO DE EXTRAPOLACIÓN (2018):
+  RMSE: 31565.13
+  R^2: -1.36
+
+Se ve claramente que reduce el sobreajuste, funciona algo mejor con los datos de prueba pero sigue siendo muy deficiente para predecir. 
+
+SARIMA
+Para la selección mencionada anteriormente utilizaré el modelo SARIMA, una extensión del modelo ARIMA que tiene en cuenta la estacionalidad. 
+
+Para estos modelos estacionales es importante hacer la separación de datos de manera cronológica, ya que estos modelos trabajan mejor de esta manera. Observamos los datos de entrenamiento de color azul, los de prueba en naranja y las lineas discontinuas son las predicciones del modelo.
+SARIMA necesita algunos parámetros de configuración para desempeñar el modelo. Para calcular dichos valores debemos observar las gráficas de Autocorrelación y la autocorrelación parcial. 
+Autocorrelación se utiliza para ver el impacto del dato anterior sobre el actual. No se observa ninguna estacionalidad, vemos que decrece lentamente lo que no indica estacionalidad.
+Estas gráficas se deben hacer para cada region-type ya que cada uno de ellos se comporta de manera diferente. En este caso he utilizado Philadelphia- Organic para llevar a cabo el estudio.
+
+![image](https://github.com/user-attachments/assets/51878647-c800-4d0d-ac70-4f73b7e021d8)
+
+Aplicando una diferencia no estacionaria “d=1” si que podemos observar una estacionalidad, lo que esto hace es, en vez de tener en cuenta el dato, tiene en cuenta la diferencia del dato actual con el dato anterior. En este caso sí que se observa una estacionalidad clara.
+
+![image](https://github.com/user-attachments/assets/8ebda5f0-88ef-460d-b0d5-9a0a9d481dcc)
+
+Aplicaré los parámetros encontrados sobre las combinaciones mencionadas para ver el comportamiento de SARIMA.
+
+CALIFORNIA
+
+![image](https://github.com/user-attachments/assets/5ef67bf4-d8de-45ee-9767-2afdfd6b6972) ![image](https://github.com/user-attachments/assets/b9a99c2e-40d3-4a0b-87d0-2cb9537da5bf)
+
+CHICAGO
+
+![image](https://github.com/user-attachments/assets/b8e91795-210e-4e25-a4f8-321a5cfd28ce) ![image](https://github.com/user-attachments/assets/cc37c6df-e0fb-4831-9d1c-f207d097913d)
+
+ROANOKE - organic
+
+![image](https://github.com/user-attachments/assets/6345e06f-71de-4d73-9d57-505bf6baca54)
+
+PHILADELPHIA- organic
+
+![image](https://github.com/user-attachments/assets/fc599cd7-cb02-4d6d-bb7e-245c54ff2919)
+
+NASHVILLE - conventional
+
+![image](https://github.com/user-attachments/assets/49dba8b9-e948-45c3-8c10-333217d9293f)
+
+En algunos casos el modelo captura bien el comportamiento de los datos, mientras que en otros únicamente los mantiene en el rango de confianza.
+
+### CONCLUSIONES
+
+El objetivo principal fue identificar los factores que subyacen a las fluctuaciones de precios y volúmenes, así como evaluar la viabilidad de desarrollar modelos predictivos robustos.
+
+Impacto Estacional y Eventos: El consumo aumenta notablemente con eventos como la Super Bowl y festividades de mayo, afectando volumen y precios.
+
+Auge de Aguacates Orgánicos: Su popularidad y volumen de ventas crecen constantemente, a diferencia de los convencionales, más estables.
+
+Relación Volumen-Precio Inversa: A mayor volumen de aguacates en el mercado, el precio tiende a bajar, y viceversa.
+
+Mercado Regional Heterogéneo: Existen diferencias significativas en consumo, precios y preferencia por orgánicos entre regiones de EE. UU..
+
+Modelos Clásicos Limitados: Regresión lineal y polinómica ofrecieron poca utilidad predictiva para este mercado. Random Forest tendió al sobreajuste en extrapolaciones.
+
+SARIMA, Mejor Opción Estacional: Este modelo fue el más apto para capturar la estacionalidad en las series de volumen, requiriendo una cuidadosa parametrización.
+
+Importancia de Ingeniería de Características: Crear variables como lags de volumen/precio y marcadores de festividades fue relevante para los modelos.
+
+Análisis de Cohortes y Madurez del Mercado: Este análisis reveló una mayor estabilidad en cohortes recientes, especialmente de orgánicos, sugiriendo una consolidación de estos mercados.
 
  ## Bibliografia
  https://documentation.avaya.com/es-XL/bundle/AvayaCMSDBItemsCalculations_r21/page/Avaya_Documentation_Center_navigation.html
