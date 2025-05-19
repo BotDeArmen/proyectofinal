@@ -490,5 +490,3 @@ Importancia de Ingeniería de Características: Crear variables como lags de vol
 
 Análisis de Cohortes y Madurez del Mercado: Este análisis reveló una mayor estabilidad en cohortes recientes, especialmente de orgánicos, sugiriendo una consolidación de estos mercados.
 
- ## Bibliografia
- https://documentation.avaya.com/es-XL/bundle/AvayaCMSDBItemsCalculations_r21/page/Avaya_Documentation_Center_navigation.html
