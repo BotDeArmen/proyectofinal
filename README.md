@@ -2,7 +2,7 @@
 ## Introducción
 Aguacates, qué ricos verdad? A muchos les gustará y a otros no tanto, lo que está claro es que valen su peso en oro. Para ver la tendencia que sigue el tan llamado oro verde, utilizaremos un dataset de aguacates facilitados por el profesor Anthony. En este CSV tenemos diferentes columnas referentes a cantidades de aguacates vendidas por ciertas regiones o ciudades.
 ## Conjunto de datos
-El análisis se basa en una base de datos que contiene un registro con la información relacionada a la llamada, pero no contiene información de la propia llamada; no sabemos la causa de estas llamadas.
+Datos de evolución de precio y volumen de aguacates en regiones de EEUU
   - Número de registros: muchos
   - Número de columnas: 13
     -  Date: Fecha del registro (semanal)
@@ -19,8 +19,6 @@ El análisis se basa en una base de datos que contiene un registro con la inform
     -  region: Lugar, ciudad.
   - Columnas principales:
 
-Utilizaré un archivo que tiene el propio Avaya en su pagina que se encarga de explicar a que se refiere cada columna, ya que son los que gestionan esta base de datos.
-
 ## Objetivos
 Se limpian y cargan los datos: Se gestionan los valores nulos, se eliminan duplicados y se estandarizan los formatos.
 Se exploran con gráficos iniciales: Se buscan patrones generales a través de visualizaciones básicas.
@@ -28,6 +26,7 @@ Se analiza la evolución en el tiempo: Se estudian precios y volúmenes promedio
 Se compara por regiones de EE. UU.: Se identifican diferencias en los patrones regionales.
 Se evalúa entre tipos de aguacate: Se buscan las disparidades entre las variedades.
 Se visualizan los hallazgos clave: Se crean gráficas para comunicar las conclusiones principales.
+
 ## Tecnología y herramientas
 
 ## Proceso
