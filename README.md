@@ -31,13 +31,13 @@ Datos de evolución de precio y volumen de aguacates en regiones de EEUU
 **Modelos IA**: Modelaje de modelos predictivos con el fin de predecir el precio y volumen a futuro.\
 
 ## Tecnología y herramientas
-ORANGE: Herramienta para testeo y visualización de datos.\
-PYTHON: Lenguaje utilizado en gran parte del proyecto, así como librerías y dependencias clave para el desarrollo de modelos.\
-R: Generación de ciertas visualizaciones para clarificar la información.\
-POWERBI: Generación de gráficas interactivas para brindar información relevante.\
-GOOGLE COLLAB: Herramienta de google para procesar el código en python.\
-GITHUB: Portafolio del proyecto.\
-EXCEL: Visualización de las tablas generales, filtrajes, etc.
+**Orange**: Herramienta para testeo y visualización de datos.\
+**Python**: Lenguaje utilizado en gran parte del proyecto, así como librerías y dependencias clave para el desarrollo de modelos.\
+**R**: Generación de ciertas visualizaciones para clarificar la información.\
+**Power BI**: Generación de gráficas interactivas para brindar información relevante.\
+**Google Collab**: Herramienta de google para procesar el código en python.\
+**Github**: Portafolio del proyecto.\
+**Excel**: Visualización de las tablas generales, filtrajes, etc.
 
 ## Sobre el repositorio
 En este repositorio encontraremos todos los documentos que se han utilizado para llevar a cabo este trabajo. Esta basado en Google Collab 
