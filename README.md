@@ -7,39 +7,39 @@ Aguacates, qué ricos verdad? A muchos les gustará y a otros no tanto, lo que e
 Datos de evolución de precio y volumen de aguacates en regiones de EEUU
   - Número de registros: muchos
   - Número de columnas: 13
-    -  Date: Fecha del registro (semanal)
-    -  AveragePrice: Precio promedio
-    -  Total Volume: El volumen total
+    -  **Date**: Fecha del registro (semanal)
+    -  **AveragePrice**: Precio promedio
+    -  **Total Volume**: El volumen total
     -  4046: Tipo de aguacate Hass pequeño
     -  4225: Tipo de aguacate Hass grande
     -  4770: Tipo de aguacate Hass extragrande
     -  Total bags: Cantidad de bolsas vendidas totales
     -  Small Bags: Bolsas pequeñas
     -  XLarge Bags: Bolsas grandes
-    -  type: Tipo
-    -  year: Año
-    -  region: Lugar, ciudad.
+    -  **type**: Tipo
+    -  **year**: Año
+    -  **region**: Lugar, ciudad.
   - Columnas principales:
 
 ## Objetivos
-Limpiar y cargar los datos: Gestionar los valores nulos, eliminar duplicados y estandarizar los formatos.
-Exploración con gráficos iniciales: Buscar patrones generales a través de visualizaciones.
-Analizar la evolución en el tiempo: Estudiar precios y volúmenes promedio, con foco en la estacionalidad.
-Comprar por regiones de EE. UU.: Identificar diferencias en los patrones regionales.
-Evaluar entre tipos de aguacate: Buscar las disparidades entre las variedades.
-Visualizar los hallazgos clave: Crear gráficas para comunicar las conclusiones principales.
-Modelos IA: Modelaje de modelos predictivos con el fin de predecir el precio y volumen a futuro.
+**Limpiar y cargar los datos**: Gestionar los valores nulos, eliminar duplicados y estandarizar los formatos.\n
+**Exploración con gráficos iniciales**: Buscar patrones generales a través de visualizaciones.\n
+**Analizar la evolución en el tiempo**: Estudiar precios y volúmenes promedio, con foco en la estacionalidad.\n
+**Comprar por regiones de EEU**.: Identificar diferencias en los patrones regionales.\n
+**Evaluar entre tipos de aguacate**: Buscar las disparidades entre las variedades.\n
+**Visualizar los hallazgos clave**: Crear gráficas para comunicar las conclusiones principales.\n
+**Modelos IA**: Modelaje de modelos predictivos con el fin de predecir el precio y volumen a futuro.\n
 
 ## Tecnología y herramientas
-ORANGE: Herramienta para testeo y visualización de datos.
-PYTHON: Lenguaje utilizado en gran parte del proyecto, así como librerías y dependencias clave para el desarrollo de modelos.
-R: Generación de ciertas visualizaciones para clarificar la información.
-POWERBI: Generación de gráficas interactivas para brindar información relevante.
-GOOGLE COLLAB: Herramienta de google para procesar el código en python.
-GITHUB: Portafolio del proyecto.
+ORANGE: Herramienta para testeo y visualización de datos.\n
+PYTHON: Lenguaje utilizado en gran parte del proyecto, así como librerías y dependencias clave para el desarrollo de modelos.\n
+R: Generación de ciertas visualizaciones para clarificar la información.\n
+POWERBI: Generación de gráficas interactivas para brindar información relevante.\n
+GOOGLE COLLAB: Herramienta de google para procesar el código en python.\n
+GITHUB: Portafolio del proyecto.\n
 EXCEL: Visualización de las tablas generales, filtrajes, etc.
 
 ## Sobre el repositorio
-En este repositorio encontraremos todos los documentos que se han utilizado para llevar a cabo este trabajo.
+En este repositorio encontraremos todos los documentos que se han utilizado para llevar a cabo este trabajo. Esta basado en Google Collab 
 
 
