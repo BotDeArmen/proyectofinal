@@ -22,7 +22,7 @@ Datos de evolución de precio y volumen de aguacates en regiones de EEUU
   - Columnas principales:
 
 ## Objetivos
-**Limpiar y cargar los datos**: Gestionar los valores nulos, eliminar duplicados y estandarizar los formatos. \n
+**Limpiar y cargar los datos**: Gestionar los valores nulos, eliminar duplicados y estandarizar los formatos. \
 **Exploración con gráficos iniciales**: Buscar patrones generales a través de visualizaciones.\n
 **Analizar la evolución en el tiempo**: Estudiar precios y volúmenes promedio, con foco en la estacionalidad.\n
 **Comprar por regiones de EEU**.: Identificar diferencias en los patrones regionales.\n
