@@ -43,4 +43,6 @@ Datos de evolución de precio y volumen de aguacates en regiones de EEUU
 En este repositorio encontraremos todos los documentos que se han utilizado para llevar a cabo este trabajo. Esta basado en Google Collab y algunas herramientas utilizadas durante el proceso que se detallan en la Memoria. 
 Enlace de las visualizaciones en Power BI:
 
+https://alumnoifp-my.sharepoint.com/:u:/g/personal/ahakobyan_student_ifp_es/ETHdlQ2k8kNJhv8s3eElBW0BlpieiNEpzjc-VygcRrG0lA?e=BBKwaZ
+ 
 
